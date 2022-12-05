@@ -1,60 +1,66 @@
+export {}
+
 const fs = require('fs')
 const path = require('path')
 
 const input = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf8')
 const roundsArray: string[] = input.split('\n')
 
-// Rock      = A X   1
-// Paper     = B Y   2
-// Scissors  = C Z   3
+// Rock      = A   1
+// Paper     = B   2
+// Scissors  = C   3
+// X = Lose
+// Y = Draw
+// Z = Win
 // Win 6, Draw 3, Lost 0
-// ax ay az bx by bz cx cy cz
 
 const getScore = (round: string) => {
-  const [opponent, you] = round.split(' ')
+  const [opponent, result] = round.split(' ')
   let score = 0
 
-  switch (you) {
-    case 'X': // Rock
+  switch (result) {
+    case 'X': // Lose
       switch (opponent) {
-        case 'A':
-          score += 3
+        case 'A': // Rock
+          score += 3 // Scissors
           break
         case 'B':
+          score += 1
           break
         case 'C':
-          score += 6
+          score += 2
           break
         }
-      score += 1
       break
 
-    case 'Y': // Paper
+    case 'Y': // Draw
       switch (opponent) {
         case 'A':
-          score += 6
+          score += 1
           break
         case 'B':
-          score += 3
-          break
-        case 'C':
-          break
-        }
-      score += 2
-      break
-
-    case 'Z': // Scissors
-      switch (opponent) {
-        case 'A':
-          break
-        case 'B':
-          score += 6
+          score += 2
           break
         case 'C':
           score += 3
           break
         }
       score += 3
+      break
+
+    case 'Z': // Win
+      switch (opponent) {
+        case 'A':
+          score += 2
+          break
+        case 'B':
+          score += 3
+          break
+        case 'C':
+          score += 1
+          break
+        }
+      score += 6
       break
   }
 
@@ -65,4 +71,4 @@ const scores = roundsArray
   .map(round => getScore(round))
 const total = scores.reduce((sum, currentValue) => sum + currentValue, 0)
 
-console.log(total) // 14531
+console.log(total) //11258
