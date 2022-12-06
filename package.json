@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/arnelbucio/advent-of-code/issues"
   },
-  "homepage": "https://github.com/arnelbucio/advent-of-code#readme"
+  "homepage": "https://github.com/arnelbucio/advent-of-code#readme",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
 }
