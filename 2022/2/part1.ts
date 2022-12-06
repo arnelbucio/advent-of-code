@@ -1,5 +1,5 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 const input = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf8')
 const roundsArray: string[] = input.split('\n')
@@ -15,47 +15,47 @@ const getScore = (round: string) => {
   let score = 0
 
   switch (you) {
-    case 'X': // Rock
-      switch (opponent) {
-        case 'A':
-          score += 3
-          break
-        case 'B':
-          break
-        case 'C':
-          score += 6
-          break
-        }
-      score += 1
-      break
-
-    case 'Y': // Paper
-      switch (opponent) {
-        case 'A':
-          score += 6
-          break
-        case 'B':
-          score += 3
-          break
-        case 'C':
-          break
-        }
-      score += 2
-      break
-
-    case 'Z': // Scissors
-      switch (opponent) {
-        case 'A':
-          break
-        case 'B':
-          score += 6
-          break
-        case 'C':
-          score += 3
-          break
-        }
+  case 'X': // Rock
+    switch (opponent) {
+    case 'A':
       score += 3
       break
+    case 'B':
+      break
+    case 'C':
+      score += 6
+      break
+    }
+    score += 1
+    break
+
+  case 'Y': // Paper
+    switch (opponent) {
+    case 'A':
+      score += 6
+      break
+    case 'B':
+      score += 3
+      break
+    case 'C':
+      break
+    }
+    score += 2
+    break
+
+  case 'Z': // Scissors
+    switch (opponent) {
+    case 'A':
+      break
+    case 'B':
+      score += 6
+      break
+    case 'C':
+      score += 3
+      break
+    }
+    score += 3
+    break
   }
 
   return score

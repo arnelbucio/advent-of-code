@@ -1,13 +1,13 @@
 export {}
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 const input = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf8')
-const inputArray: string[] = input.split('\n\n')
+const elvesArray: string[] = input.split('\n\n')
 
 
-const elfCalories = inputArray
+const elfCalories = elvesArray
   .map(elf => {
     return elf
       .split('\n')

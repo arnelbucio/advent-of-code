@@ -1,5 +1,5 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 const input = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf8')
 const elvesArray: string[] = input.split('\n\n')
